@@ -1,0 +1,109 @@
+<rdf:RDF xmlns="http://elearning.upt.ro/ontology/edu#"
+    xmlns:dc="http://purl.org/dc/terms/"
+    xmlns:edu="http://elearning.upt.ro/ontology/edu#"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/"
+    xmlns:log="http://www.w3.org/2000/10/swap/log#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:vcard="http://www.w3.org/2006/vcard/ns#">
+
+    <rdfs:Class rdf:about="http://elearning.upt.ro/ontology/edu#Admin">
+        <rdfs:label xml:lang="en">Administrator</rdfs:label>
+        <rdfs:label xml:lang="ro">Administrator</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    </rdfs:Class>
+
+    <rdfs:Class rdf:about="http://elearning.upt.ro/ontology/edu#Faculty">
+        <rdfs:label xml:lang="ro">Facultate</rdfs:label>
+        <rdfs:label xml:lang="en">Faculty</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://elearning.upt.ro/ontology/edu#University"/>
+    </rdfs:Class>
+
+    <rdfs:Class rdf:about="http://elearning.upt.ro/ontology/edu#Guest">
+        <rdfs:label xml:lang="en">Guest</rdfs:label>
+        <rdfs:label xml:lang="ro">Vizitator</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    </rdfs:Class>
+
+    <rdfs:Class rdf:about="http://elearning.upt.ro/ontology/edu#Rights">
+        <rdfs:label xml:lang="ro">Drepturi</rdfs:label>
+        <rdfs:label xml:lang="en">Rights</rdfs:label>
+    </rdfs:Class>
+
+    <rdfs:Class rdf:about="http://elearning.upt.ro/ontology/edu#Student">
+        <rdfs:label xml:lang="en">Student</rdfs:label>
+        <rdfs:label xml:lang="ro">Student</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    </rdfs:Class>
+
+    <rdfs:Class rdf:about="http://elearning.upt.ro/ontology/edu#Tutor">
+        <rdfs:label xml:lang="en">Tutor</rdfs:label>
+        <rdfs:label xml:lang="ro">Tutore</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    </rdfs:Class>
+
+    <rdfs:Class rdf:about="http://elearning.upt.ro/ontology/edu#University">
+        <rdfs:label xml:lang="ro">Universitate</rdfs:label>
+        <rdfs:label xml:lang="en">University</rdfs:label>
+    </rdfs:Class>
+
+    <rdf:Property rdf:about="http://elearning.upt.ro/ontology/edu#facultyOfUniversity">
+        <rdfs:domain rdf:resource="http://elearning.upt.ro/ontology/edu#Faculty"/>
+        <rdfs:label xml:lang="ro">apartine de facultatea</rdfs:label>
+        <rdfs:label xml:lang="en">has faculty</rdfs:label>
+        <rdfs:range rdf:resource="http://elearning.upt.ro/ontology/edu#University"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://elearning.upt.ro/ontology/edu#hasColleague">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+        <rdfs:label xml:lang="ro">are coleg pe</rdfs:label>
+        <rdfs:label xml:lang="en">has colleague</rdfs:label>
+        <rdfs:range rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+        <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/knows"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://elearning.upt.ro/ontology/edu#hasFaculty">
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+        <rdfs:label xml:lang="ro">apartine de facultatea</rdfs:label>
+        <rdfs:label xml:lang="en">has faculty</rdfs:label>
+        <rdfs:range rdf:resource="http://elearning.upt.ro/ontology/edu#Faculty"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://elearning.upt.ro/ontology/edu#hasRight">
+        <rdfs:label xml:lang="ro">are dreptul</rdfs:label>
+        <rdfs:label xml:lang="en">has right</rdfs:label>
+        <rdfs:range rdf:resource="http://elearning.upt.ro/ontology/edu#Rights"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://elearning.upt.ro/ontology/edu#hasStudent">
+        <rdfs:domain rdf:resource="http://elearning.upt.ro/ontology/edu#Tutor"/>
+        <rdfs:label xml:lang="ro">are student pe</rdfs:label>
+        <rdfs:label xml:lang="en">has student</rdfs:label>
+        <rdfs:range rdf:resource="http://elearning.upt.ro/ontology/edu#Student"/>
+        <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/knows"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://elearning.upt.ro/ontology/edu#hasTutor">
+        <rdfs:domain rdf:resource="http://elearning.upt.ro/ontology/edu#Student"/>
+        <rdfs:label xml:lang="ro">are tutore pe</rdfs:label>
+        <rdfs:label xml:lang="en">has tutor</rdfs:label>
+        <rdfs:range rdf:resource="http://elearning.upt.ro/ontology/edu#Tutor"/>
+        <rdfs:subPropertyOf rdf:resource="http://xmlns.com/foaf/0.1/knows"/>
+        <owl:inverseOf rdf:resource="http://elearning.upt.ro/ontology/edu#hasStudent"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://elearning.upt.ro/ontology/edu#hasUniversity">
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+        <rdfs:label xml:lang="ro">apartine de universitatea</rdfs:label>
+        <rdfs:label xml:lang="en">has university</rdfs:label>
+        <rdfs:range rdf:resource="http://elearning.upt.ro/ontology/edu#University"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://elearning.upt.ro/ontology/edu#removeRight">
+        <rdfs:label xml:lang="en">no right</rdfs:label>
+        <rdfs:label xml:lang="ro">nu are dreptul</rdfs:label>
+        <rdfs:range rdf:resource="http://elearning.upt.ro/ontology/edu#Rights"/>
+    </rdf:Property>
+</rdf:RDF>

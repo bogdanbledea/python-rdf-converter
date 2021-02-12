@@ -1,0 +1,258 @@
+<rdf:RDF xmlns="http://elearning.upt.ro/ontology/edu#"
+    xmlns:dc="http://purl.org/dc/terms/"
+    xmlns:edu="http://elearning.upt.ro/ontology/edu#"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/"
+    xmlns:log="http://www.w3.org/2000/10/swap/log#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:vcard="http://www.w3.org/2006/vcard/ns#">
+
+    <rdfs:Class rdf:about="http://elearning.upt.ro/ontology/edu#Course">
+        <rdfs:label xml:lang="en">Course</rdfs:label>
+        <rdfs:label xml:lang="ro">Curs</rdfs:label>
+    </rdfs:Class>
+    
+    <rdfs:Class rdf:about="http://elearning.upt.ro/ontology/edu#Report">
+        <rdfs:label xml:lang="en">Report</rdfs:label>
+        <rdfs:label xml:lang="ro">Raport</rdfs:label>
+    </rdfs:Class>
+
+    <rdfs:Class rdf:about="http://elearning.upt.ro/ontology/edu#CourseResource">
+        <rdfs:label xml:lang="en">Course Resource</rdfs:label>
+        <rdfs:label xml:lang="ro">Resursa de curs</rdfs:label>
+    </rdfs:Class>
+    
+    <rdfs:Class rdf:about="http://elearning.upt.ro/ontology/edu#File">
+        <rdfs:label xml:lang="en">File</rdfs:label>
+        <rdfs:label xml:lang="ro">Fisier</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://elearning.upt.ro/ontology/edu#CourseResource"/>
+    </rdfs:Class>
+    
+    <rdfs:Class rdf:about="http://elearning.upt.ro/ontology/edu#Folder">
+        <rdfs:label xml:lang="en">Folder</rdfs:label>
+        <rdfs:label xml:lang="ro">Director</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://elearning.upt.ro/ontology/edu#CourseResource"/>
+    </rdfs:Class>
+    
+    <rdfs:Class rdf:about="http://elearning.upt.ro/ontology/edu#Page">
+        <rdfs:label xml:lang="en">Page</rdfs:label>
+        <rdfs:label xml:lang="ro">Pagina</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://elearning.upt.ro/ontology/edu#CourseResource"/>
+    </rdfs:Class>
+    
+    <rdfs:Class rdf:about="http://elearning.upt.ro/ontology/edu#URL">
+        <rdfs:label xml:lang="en">URL address</rdfs:label>
+        <rdfs:label xml:lang="ro">Adresa URL</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://elearning.upt.ro/ontology/edu#CourseResource"/>
+    </rdfs:Class>
+
+    <rdfs:Class rdf:about="http://elearning.upt.ro/ontology/edu#Curriculum">
+        <rdfs:label xml:lang="en">Curriculum</rdfs:label>
+        <rdfs:label xml:lang="ro">Curriculum</rdfs:label>
+    </rdfs:Class>
+
+    <rdfs:Class rdf:about="http://elearning.upt.ro/ontology/edu#Laboratory">
+        <rdfs:label xml:lang="ro">Laborator</rdfs:label>
+        <rdfs:label xml:lang="en">Laboratory</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://elearning.upt.ro/ontology/edu#SectionOfCourse"/>
+    </rdfs:Class>
+
+    <rdfs:Class rdf:about="http://elearning.upt.ro/ontology/edu#Lecture">
+        <rdfs:label xml:lang="ro">Intalnire de curs</rdfs:label>
+        <rdfs:label xml:lang="en">Lecture</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://elearning.upt.ro/ontology/edu#SectionOfCourse"/>
+    </rdfs:Class>
+
+    <rdfs:Class rdf:about="http://elearning.upt.ro/ontology/edu#Project">
+        <rdfs:label xml:lang="ro">Proiect</rdfs:label>
+        <rdfs:label xml:lang="en">Project</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://elearning.upt.ro/ontology/edu#SectionOfCourse"/>
+    </rdfs:Class>
+
+    <rdfs:Class rdf:about="http://elearning.upt.ro/ontology/edu#SectionOfCourse">
+        <rdfs:label xml:lang="en">Section of course</rdfs:label>
+        <rdfs:label xml:lang="ro">Sectiune de curs</rdfs:label>
+    </rdfs:Class>
+
+    <rdfs:Class rdf:about="http://elearning.upt.ro/ontology/edu#SectionOfCurriculum">
+        <rdfs:label xml:lang="en">Section of Curriculum</rdfs:label>
+        <rdfs:label xml:lang="ro">Sectiune de Curriculum</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://elearning.upt.ro/ontology/edu#Curriculum"/>
+    </rdfs:Class>
+
+    <rdfs:Class rdf:about="http://elearning.upt.ro/ontology/edu#Seminar">
+        <rdfs:label xml:lang="en">Seminar</rdfs:label>
+        <rdfs:label xml:lang="ro">Seminar</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://elearning.upt.ro/ontology/edu#SectionOfCourse"/>
+    </rdfs:Class>
+
+    <rdf:Property rdf:about="http://elearning.upt.ro/ontology/edu#belongsToSectionOfCurriculum">
+        <rdfs:domain rdf:resource="http://elearning.upt.ro/ontology/edu#Course"/>
+        <rdfs:label xml:lang="en">course belongs to curriculum</rdfs:label>
+        <rdfs:label xml:lang="ro">cursului face parte din curriculum</rdfs:label>
+        <rdfs:range rdf:resource="http://elearning.upt.ro/ontology/edu#SectionOfCurriculum"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://elearning.upt.ro/ontology/edu#conditionBy">
+        <rdfs:domain rdf:resource="http://elearning.upt.ro/ontology/edu#Course"/>
+        <rdfs:label xml:lang="en">condition by</rdfs:label>
+        <rdfs:label xml:lang="ro">conditionat de</rdfs:label>
+        <rdfs:range rdf:resource="http://elearning.upt.ro/ontology/edu#Course"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://elearning.upt.ro/ontology/edu#courseDescription">
+        <rdfs:domain rdf:resource="http://elearning.upt.ro/ontology/edu#Course"/>
+        <rdfs:label xml:lang="en">course description</rdfs:label>
+        <rdfs:label xml:lang="ro">descrierea cursului</rdfs:label>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://elearning.upt.ro/ontology/edu#courseName">
+        <rdfs:domain rdf:resource="http://elearning.upt.ro/ontology/edu#Course"/>
+        <rdfs:label xml:lang="en">course name</rdfs:label>
+        <rdfs:label xml:lang="ro">numele cursului</rdfs:label>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://elearning.upt.ro/ontology/edu#curriculumFor">
+        <rdfs:domain rdf:resource="http://elearning.upt.ro/ontology/edu#Curriculum"/>
+        <rdfs:label xml:lang="en">curriculum for faculty</rdfs:label>
+        <rdfs:label xml:lang="ro">curriculum pentru facultatea</rdfs:label>
+        <rdfs:range rdf:resource="http://elearning.upt.ro/ontology/edu#Faculty"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://elearning.upt.ro/ontology/edu#domain">
+        <rdfs:domain rdf:resource="http://elearning.upt.ro/ontology/edu#Course"/>
+        <rdfs:label xml:lang="en">course domain</rdfs:label>
+        <rdfs:label xml:lang="ro">domeniul cursului</rdfs:label>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://elearning.upt.ro/ontology/edu#hasGrade">
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+        <rdfs:label xml:lang="ro">are nota</rdfs:label>
+        <rdfs:label xml:lang="en">ha grade</rdfs:label>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://elearning.upt.ro/ontology/edu#hasLaboratory">
+        <rdfs:domain rdf:resource="http://elearning.upt.ro/ontology/edu#SectionOfCourse"/>
+        <rdfs:label xml:lang="ro">are laboratorul</rdfs:label>
+        <rdfs:label xml:lang="en">has laboratory</rdfs:label>
+        <rdfs:range rdf:resource="http://elearning.upt.ro/ontology/edu#Laboratory"/>
+        <rdfs:subPropertyOf rdf:resource="http://elearning.upt.ro/ontology/edu#hasSectionOfCourse"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://elearning.upt.ro/ontology/edu#hasLecture">
+        <rdfs:domain rdf:resource="http://elearning.upt.ro/ontology/edu#Course"/>
+        <rdfs:label xml:lang="ro">are intalnirea pe curs</rdfs:label>
+        <rdfs:label xml:lang="en">has lecture</rdfs:label>
+        <rdfs:range rdf:resource="http://elearning.upt.ro/ontology/edu#Lecture"/>
+        <rdfs:subPropertyOf rdf:resource="http://elearning.upt.ro/ontology/edu#hasSectionOfCourse"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://elearning.upt.ro/ontology/edu#hasProject">
+        <rdfs:domain rdf:resource="http://elearning.upt.ro/ontology/edu#Course"/>
+        <rdfs:label xml:lang="ro">are proiect</rdfs:label>
+        <rdfs:label xml:lang="en">has proiect</rdfs:label>
+        <rdfs:range rdf:resource="http://elearning.upt.ro/ontology/edu#Project"/>
+        <rdfs:subPropertyOf rdf:resource="http://elearning.upt.ro/ontology/edu#hasSectionOfCourse"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://elearning.upt.ro/ontology/edu#hasResource">
+        <rdfs:domain rdf:resource="http://elearning.upt.ro/ontology/edu#SectionOfCourse"/>
+        <rdfs:label xml:lang="ro">are resursa</rdfs:label>
+        <rdfs:label xml:lang="en">has resource</rdfs:label>
+        <rdfs:range rdf:resource="http://elearning.upt.ro/ontology/edu#CourseResource"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://elearning.upt.ro/ontology/edu#hasSectionOfCourse">
+        <rdfs:domain rdf:resource="http://elearning.upt.ro/ontology/edu#Course"/>
+        <rdfs:label xml:lang="ro">are sectiunea</rdfs:label>
+        <rdfs:label xml:lang="en">has section</rdfs:label>
+        <rdfs:range rdf:resource="http://elearning.upt.ro/ontology/edu#SectionOfCourse"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://elearning.upt.ro/ontology/edu#hasSectionOfCurriculum">
+        <rdfs:domain rdf:resource="http://elearning.upt.ro/ontology/edu#Curriculum"/>
+        <rdfs:label xml:lang="ro">are sectiunea</rdfs:label>
+        <rdfs:label xml:lang="en">has section</rdfs:label>
+        <rdfs:range rdf:resource="http://elearning.upt.ro/ontology/edu#SectionOfCurriculum"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://elearning.upt.ro/ontology/edu#hasSeminar">
+        <rdfs:domain rdf:resource="http://elearning.upt.ro/ontology/edu#Course"/>
+        <rdfs:label xml:lang="ro">are seminar</rdfs:label>
+        <rdfs:label xml:lang="en">has seminar</rdfs:label>
+        <rdfs:range rdf:resource="http://elearning.upt.ro/ontology/edu#Seminar"/>
+        <rdfs:subPropertyOf rdf:resource="http://elearning.upt.ro/ontology/edu#hasSectionOfCourse"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://elearning.upt.ro/ontology/edu#mandatoryCourse">
+        <rdfs:domain rdf:resource="http://elearning.upt.ro/ontology/edu#Curriculum"/>
+        <rdfs:label xml:lang="ro">curs obligatoriu</rdfs:label>
+        <rdfs:label xml:lang="en">mandatory course</rdfs:label>
+        <rdfs:range rdf:resource="http://elearning.upt.ro/ontology/edu#Course"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://elearning.upt.ro/ontology/edu#onCourse">
+        <rdfs:domain rdf:resource="http://elearning.upt.ro/ontology/edu#Course"/>
+        <rdfs:label xml:lang="ro">la cursul</rdfs:label>
+        <rdfs:label xml:lang="en">on course</rdfs:label>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://elearning.upt.ro/ontology/edu#onSectionOfCourse">
+        <rdfs:domain rdf:resource="http://elearning.upt.ro/ontology/edu#Course"/>
+        <rdfs:label xml:lang="ro">la sectiunea de curs</rdfs:label>
+        <rdfs:label xml:lang="en">on course section</rdfs:label>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://elearning.upt.ro/ontology/edu#optionalCourse">
+        <rdfs:domain rdf:resource="http://elearning.upt.ro/ontology/edu#Curriculum"/>
+        <rdfs:label xml:lang="ro">curs optional</rdfs:label>
+        <rdfs:label xml:lang="en">optional course</rdfs:label>
+        <rdfs:range rdf:resource="http://elearning.upt.ro/ontology/edu#Course"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://elearning.upt.ro/ontology/edu#resourceLocation">
+        <rdfs:domain rdf:resource="http://elearning.upt.ro/ontology/edu#CourseResource"/>
+        <rdfs:label xml:lang="en">url resource</rdfs:label>
+        <rdfs:label xml:lang="ro">url resursa</rdfs:label>
+    </rdf:Property>
+    
+    <rdf:Property rdf:about="http://elearning.upt.ro/ontology/edu#viewCourse">
+        <rdfs:label xml:lang="en">course viewed</rdfs:label>
+        <rdfs:label xml:lang="ro">curs accesata</rdfs:label>
+        <rdfs:range rdf:resource="http://elearning.upt.ro/ontology/edu#Course"/>
+    </rdf:Property>
+    
+    <rdf:Property rdf:about="http://elearning.upt.ro/ontology/edu#viewResource">
+        <rdfs:label xml:lang="en">resource viewed</rdfs:label>
+        <rdfs:label xml:lang="ro">resursa accesata</rdfs:label>
+        <rdfs:range rdf:resource="http://elearning.upt.ro/ontology/edu#CourseResource"/>
+    </rdf:Property>
+    
+    <rdf:Property rdf:about="http://elearning.upt.ro/ontology/edu#viewReports">
+        <rdfs:label xml:lang="en">reports viewed</rdfs:label>
+        <rdfs:label xml:lang="ro">rapoarte accesata</rdfs:label>
+    </rdf:Property>
+    
+    <rdf:Property rdf:about="http://elearning.upt.ro/ontology/edu#viewUsers">
+        <rdfs:label xml:lang="en">users viewed</rdfs:label>
+        <rdfs:label xml:lang="ro">informatii utilizatori vizualizate</rdfs:label>
+    </rdf:Property>
+    
+    <rdf:Property rdf:about="http://elearning.upt.ro/ontology/edu#studentOf">
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+        <rdfs:label xml:lang="ro">curs optional</rdfs:label>
+        <rdfs:label xml:lang="en">optional course</rdfs:label>
+        <rdfs:label xml:lang="en">student of</rdfs:label>
+        <rdfs:label xml:lang="ro">studentla</rdfs:label>
+        <rdfs:range rdf:resource="http://elearning.upt.ro/ontology/edu#Course"/>
+    </rdf:Property>
+
+    <rdf:Property rdf:about="http://elearning.upt.ro/ontology/edu#tutorOf">
+        <rdfs:domain rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+        <rdfs:label xml:lang="en">tutor of</rdfs:label>
+        <rdfs:label xml:lang="ro">tutorla</rdfs:label>
+        <rdfs:range rdf:resource="http://elearning.upt.ro/ontology/edu#Course"/>
+    </rdf:Property>
+</rdf:RDF>
+
