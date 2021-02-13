@@ -1,12 +1,19 @@
 from flask import Flask, request
 from rdflib.namespace import FOAF, XSD, ClosedNamespace
-from rdflib import Graph, Literal, RDF, URIRef, Namespace
+from rdflib import Graph, Literal, RDF, URIRef, Namespace, RDFS
+import re
 
 EDU = ClosedNamespace(
     uri=URIRef('http://elearning.upt.ro/ontology/edu#'),
     terms=[
-        'Student', 'viewUsers', 'viewCourse'
+        'Student', 'viewUsers', 'viewCourse', 'startTest', 'viewTestReport',
+        'viewTest'
     ]
+)
+
+EduDate = ClosedNamespace(
+    uri=URIRef('http://cv.upt.ro/date#'),
+    terms=[]
 )
 
 app = Flask(__name__)
@@ -16,23 +23,37 @@ def convert_rdf():
     json_form = request.get_json()
 
     eventName = json_form['eventName']
+    userFullName = json_form['userFullName']
     user = json_form['userFullName']
+    description = json_form['description']
+
 
     # create a Graph
     g = Graph()
 
-    # parse in an RDF file hosted on the Internet
-    g.parse("ontologies/person.rdf", format="xml")
-    g.parse("ontologies/activity.rdf", format="xml")
-    g.parse("ontologies/course.rdf", format="xml")
+    g.bind("edu", EDU)
+    g.bind("date", EduDate)
+    g.bind("foaf", FOAF)
 
-    user = URIRef('http://elearning.upt.ro/ontology/edu#BogdanBledea')
-    g.add((user, EDU.Student, Literal("Bogdan Bledea")))
+    # parse in an RDF file hosted on the Internet
+    # g.parse("ontologies/person.rdf", format="xml")
+    # g.parse("ontologies/activity.rdf", format="xml")
+    # g.parse("ontologies/course.rdf", format="xml")
+
+    user = URIRef(f'http://cv.upt.ro/date#{userFullName}')
+    g.add((user, RDF.type, EDU.Student))
+    g.add((user, FOAF.name, Literal(userFullName)))
 
 
     if(eventName == 'User profile viewed'):
-        the_viewed_student = URIRef('http://elearning.upt.ro/ontology/edu#VladAlexandra')
-        g.add((user, EDU.viewUsers, the_viewed_student))
+        # Extract the info from description
+        result = re.findall('\*{2}(.*?)\*{2}', description)
+
+        user_who_viewed = result[0]
+        viewed_user = result[1]
+        the_student_who_viewed = URIRef(f'http://cv.upt.ro/date#{user_who_viewed}')
+        the_viewed_student = URIRef(f'http://cv.upt.ro/date#{viewed_user}')
+        g.add((the_student_who_viewed, EDU.viewUsers, the_viewed_student))
 
     if(eventName == 'Course viewed'):
         viewed_course = URIRef('http://elearning.upt.ro/ontology/edu#LP2')
